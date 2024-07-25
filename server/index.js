@@ -1,6 +1,8 @@
 const express = require("express");
 const cors = require("cors");
 const dotenv = require("dotenv");
+const dishRoutes = require("./routes/dishRoutes");
+const userRoutes = require("./routes/userRoutes");
 
 // Load environment variables
 dotenv.config({ path: `${__dirname}/config.env` });
@@ -33,10 +35,7 @@ app.use(express.urlencoded({ extended: true, limit: "50mb" }));
 app.use(express.json());
 
 // Route definitions
-app.use("/api/v1/users");
-app.use("/api/v1/dishes");
-
-// Root route for verification when setting up Render
-app.get("/", (req, res) => res.send("Your backend is going well"));
+app.use("/api/v1/users", userRoutes);
+app.use("/api/v1/dishes", dishRoutes);
 
 module.exports = app;
