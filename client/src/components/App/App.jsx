@@ -1,5 +1,57 @@
+import { useState, useEffect } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import axios from "axios";
+import Header from "../Body/Header/Header";
+import Registration from "../Auth/Registration/Registration";
+import Login from "../Auth/Login/Login";
+import AdminPanelSection from "../AdminPanel/AdminPanelSection/AdminPanelSection";
+import Footer from "../Body/Footer/Footer";
+
 const App = () => {
-  return <div className="App"></div>;
+  const [userData, setUserData] = useState({
+    userData: { user: {} },
+    loggedIn: false,
+  });
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      axios
+        .get(`${process.env.REACT_APP_SERVER_URL}/api/v1/users/details`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+        .then((response) => {
+          setUserData({
+            user: { ...response.data.user, id: response.data.user._id },
+            loggedIn: true,
+          });
+        })
+        .catch((error) => {
+          console.error("User details error:", error);
+        });
+    }
+  }, [userData.loggedIn, setUserData]);
+
+  return (
+    <div className="App">
+      <Router>
+        <main>
+          <Header />
+          <Routes>
+            <Route
+              path="/"
+              element={<Login userData={userData} setUserData={setUserData} />}
+            />
+            <Route path="/register" element={<Registration />} />
+            <Route path="/admin-panel" element={<AdminPanelSection />} />
+          </Routes>
+        </main>
+        <Footer />
+      </Router>
+    </div>
+  );
 };
 
 export default App;
