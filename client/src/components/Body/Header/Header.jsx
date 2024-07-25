@@ -34,17 +34,17 @@ const Header = () => {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link text-white" to="/">
+                <Link className="nav-link text-white" to="/todays-lunch">
                   Šiandienos pietūs
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link text-white" to="/">
+                <Link className="nav-link text-white" to="/all-lunch">
                   Visi patiekalai
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link text-white" to="/">
+                <Link className="nav-link text-white" to="/orders">
                   Mano užsakymai
                 </Link>
               </li>

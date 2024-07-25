@@ -1,5 +1,6 @@
 import SectionDescription from "../../SectionMessages/SectionDescription/SectionDescription";
 import AdminPanelNewForm from "../AdminPanelNewForm/AdminPanelNewForm";
+import AdminPanelTable from "../AdminPanelTable/AdminPanelTable";
 
 const AdminPanelSection = () => {
   return (
@@ -24,7 +25,9 @@ const AdminPanelSection = () => {
           </a>
           <AdminPanelNewForm />
         </div>
-        <div className="mb-3">{/* table */}</div>
+        <div className="mb-3">
+          <AdminPanelTable />
+        </div>
       </div>
     </section>
   );

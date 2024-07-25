@@ -5,6 +5,9 @@ import Header from "../Body/Header/Header";
 import Registration from "../Auth/Registration/Registration";
 import Login from "../Auth/Login/Login";
 import AdminPanelSection from "../AdminPanel/AdminPanelSection/AdminPanelSection";
+import AllLunchSection from "../PublicPanel/AllLunchSection/AllLunchSections";
+import TodaysLunchSection from "../PublicPanel/TodaysLunchSection/TodaysLunchSections";
+import OrdersSection from "../PublicPanel/OrdersSection/OrdersSections";
 import Footer from "../Body/Footer/Footer";
 
 const App = () => {
@@ -46,6 +49,9 @@ const App = () => {
             />
             <Route path="/register" element={<Registration />} />
             <Route path="/admin-panel" element={<AdminPanelSection />} />
+            <Route path="/all-lunch" element={<AllLunchSection />} />
+            <Route path="/todays-lunch" element={<TodaysLunchSection />} />
+            <Route path="/orders" element={<OrdersSection />} />
           </Routes>
         </main>
         <Footer />

@@ -27,22 +27,24 @@ const AdminPanelNewForm = () => {
 
   const submitHandler = (e) => {
     const token = localStorage.getItem("token");
-    if (document.querySelector("#dish-modal-form").checkValidity()) {
-      e.preventDefault();
-      axios
-        .post(`${process.env.REACT_APP_SERVER_URL}/api/v1/dishes`, formData, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        })
-        .then((response) => {
-          const closeBtn = document.getElementById("dish-form-close-btn");
-          setFormData(resetFormData);
-          closeBtn.click();
-        })
-        .catch((error) => {
-          console.error("Dish form error:", error);
-        });
+    if (token) {
+      if (document.querySelector("#dish-modal-form").checkValidity()) {
+        e.preventDefault();
+        axios
+          .post(`${process.env.REACT_APP_SERVER_URL}/api/v1/dishes`, formData, {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          })
+          .then(() => {
+            const closeBtn = document.getElementById("dish-form-close-btn");
+            setFormData(resetFormData);
+            closeBtn.click();
+          })
+          .catch((error) => {
+            console.error("Dish form error:", error);
+          });
+      }
     }
   };
 
