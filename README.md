@@ -3,8 +3,8 @@
 WEB programa (angl. application), kurią pasitelkę miesto gyventojai ir svečiai galėtų rasti informaciją apie dienos pietus, juos užsisakyti ir įvertinti.
 Programą (angl. application) sudaro dvi dalys:
 
-1. Administracinė sritis.
-1. Vieša sritis.
+1. Administracinė sritis, kur administratorius gali vkurti ir valdyti valgiaraštį.
+1. Vieša sritis, kur visi registruoti vartotojai - tiek administratoriai, tiek įprasti - gali peržiūrėti, įvertinti bei užsisakyti šiandienos patiekalsu bei peržiūrėti visos savaitės valgiaraštį.
 
 ## Turinys
 
@@ -47,6 +47,7 @@ Norint pasileisti projektą lokaliai, t.y. savo kompiuteryje, prieš pradedant, 
 
 1. [Node.js](https://nodejs.org/ "https://nodejs.org/")
 1. [npm](https://www.npmjs.com/ "https://www.npmjs.com/") (ateina kartu su Node.js)
+1. [Postman](https://www.postman.com/)
 
 ## Diegimas
 
@@ -101,3 +102,6 @@ Tiek _server_, tiek _client_ komandinėse eilutėse įveskite šią komandą:
 ```
 npm start
 ```
+#### Prieiga prie administracinės skilties
+
+Kadangi asmeniniai .env failai su konfidencialia DB informacija GitHub neprieinami ir norint išbandyti programą reikia susikurti savo MongoDB duombazę, registruojant vartotoją ir norint jam suteikti administratoriaus teises, kurti reiktų per Postman naudojantis nurodytais endpointais ir be kitos naujo vartotojo informacijos taip pat nurodyti "role: admin".
